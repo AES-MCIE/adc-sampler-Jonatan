@@ -31,8 +31,9 @@ se escribira a la hora de ejecutar el script.
 
 **IMPORTANTE** 
 
-Para compilar el archivo es necesario que se encuentre en la carpeta en la que se tiene almacenado.
-Ya no es necesario darle permisos de ejecucion a `archivo_salida`, ya que tiene el permiso al momento de crearse.
+- Para compilar el archivo es necesario que se encuentre en la carpeta en la que se tiene almacenado.
+
+- Ya no es necesario darle permisos de ejecucion a `archivo_salida`, ya que tiene el permiso al momento de crearse.
 
 # Modo de uso
 El script desarrollado es muy sencillo de usar, ya que solamente recibe un parametro, el cual es el numero de mediciones que se desean
