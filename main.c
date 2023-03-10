@@ -60,6 +60,18 @@ int main(int argc, char *argv[]){
         fgets(reads, 20, fp);
         //printf("%s", reads);
 		mediciones[i] = strtol(reads, NULL, 10);
+		if (i == 0 ){
+			min = mediciones[i];
+			max = mediciones[i];
+		}
+		else{
+			if (min > mediciones[i]){
+				min = mediciones[i];
+			}
+			if (max < mediciones[i]){
+				max = mediciones[i];
+			}
+		}
 		SumPro = SumPro + mediciones[i];
 		contador++;
 		if (contador <= 250){
@@ -87,6 +99,8 @@ int main(int argc, char *argv[]){
 	rms =sqrt(sRMS/Nmes);
 	printf("El promedio es: %f\n", promedio);
 	printf("El valor RMS es: %f\n", rms);
+	printf("El valor minimo es: %d\n",min);
+	printf("El valor maximo es: %d\n",max);
 	printf("\n\nHistograma de mediciones\n\n");
 	int aux = 0;
 	for(i = 0; i < Nmes; i++){
