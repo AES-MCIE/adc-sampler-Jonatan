@@ -5,10 +5,13 @@
  //ADC0 <----- input
   /*
   *   Descripcion:
-  *  - [x] ADC0 test
-  *  - [x] print ADC0 9 veces
-  *  - [x] pass the n as argument
-  *  - [x] print ADC0 n veces
+  *  - [x] Valor minimo
+  *  - [x] Valor maximo
+  *  - [x] Promedio
+  *  - [x] Mediana
+  *  - [x] Histograma
+  *  - [ ] RMS
+  *  - [ ] Densidad de potencia
   * */
 #include <stdio.h>
 #include <string.h>
