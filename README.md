@@ -44,5 +44,5 @@ registrar, por lo que el comando es:
 En donde `x` es el numero de mediciones, el cual puede ir de 500 a 1000.
 
 # Nota
-Cada linea `|` del histograma representa 20 unidades de la medicion correspondiente, esto se realizo para que se pudiera visualizar mejor en la
-terminal, aun asi, puede que no quepa en pantalla, por lo que se recomienda alejar la vista para que se aprecie mejor.
+Cada linea `|` del histograma representa 20 unidades de la medicion correspondiente, esto se realizo para que se pudiera visualizar bien en la
+terminal, aun asi, puede que no quepa en pantalla, por lo que puede que se necesite alejar la vista.
