@@ -31,6 +31,7 @@ int main(int argc, char *argv[]){
 	long long sRMS = 0;
 	double promedio = 0;
 	double rms = 0;
+	double mediana = 0;
 
     //Cuando los argumentos no son dos
     if(argc != 2){
@@ -89,6 +90,16 @@ int main(int argc, char *argv[]){
 		
         sleep(0.01);
     }
+	if(Nmes % 2 == 0){
+		int divi = (Nmes-1)/2;
+		//printf("%d\n",divi);
+		mediana =(mediciones[divi]+mediciones[divi+1])/2;
+	}
+	else {
+		int divi = (Nmes-1)/2;
+		//printf("%d\n",divi);
+		mediana = mediciones[divi];
+	}
 	printf("RMS1 = %lu\n",SumRMS1);
 	printf("RMS2 = %lu\n",SumRMS2);
 	printf("RMS3 = %lu\n",SumRMS3);
@@ -101,6 +112,7 @@ int main(int argc, char *argv[]){
 	printf("El valor RMS es: %f\n", rms);
 	printf("El valor minimo es: %d\n",min);
 	printf("El valor maximo es: %d\n",max);
+	printf("Mediana: %f\n",mediana);
 	printf("\n\nHistograma de mediciones\n\n");
 	int aux = 0;
 	for(i = 0; i < Nmes; i++){
