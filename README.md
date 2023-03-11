@@ -59,8 +59,12 @@ se escribirá a la hora de ejecutar el script.
 
 # Modo de uso
 
+El pin que se usa como entrada es en `AIN0`, que se puede observar en la imagen. 
+
+![](./bbb.png)
+
 El script desarrollado es muy sencillo de usar, ya que solamente recibe un parámetro, el cual es el número de mediciones que se desean
-registrar, por lo que el comando es:
+registrar, el comando es:
 ```
 ./archivo_salida x
 ```
