@@ -59,7 +59,7 @@ se escribirá a la hora de ejecutar el script.
 
 # Modo de uso
 
-El pin que se usa como entrada es en `AIN0`, que se puede observar en la imagen. 
+El pin que se usa como entrada es `AIN0`, que se puede observar en la parte izquierda de la imagen. 
 
 ![](./bbb.png)
 
