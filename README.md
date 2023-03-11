@@ -6,21 +6,23 @@ Implement the next Data logger for the adc using C to program the function to co
 # Antes de iniciar
 
 Para poder ejecutar el script es necesario tener instalado ´gcc´, para comprobarlo teclee el siguiente comando:
-´´´
+```
 gcc -version
-´´´
-Si le aparece alguna versión instalada ya está listo para iniciar, en caso contrario, se puede instalar con el comando: 
-´´´
+```
+Si le aparece una versión instalada, ya está listo para iniciar, en caso contrario, se puede instalar `gcc` con el comando: 
+```
 sudo apt install GCC
-´´´
+```
 
 # Muestreo con ADC0 en BeagleBone Black
 
-El script fue creado para realizar de 500 a 1000 mediciones y con ellas calcular:
+El script fue creado para realizar de 500 a 1000 mediciones con el ADC0 de una BeagleBone Black y con ellas calcular:
 
 *Promedio: Suma de todos los valores dividido entre el numero de mediciones. 
 
 ![](./promedio.png)
+
+donde `Nmes` son la cantidad de mediciones y `xi` el valor medido. 
 
 *Mediana: Valor que se encuentra en la posición central de los valores medidos. En caso de que el número de datos sea par, se calcula el promedio de los datos centrales, como se aprecia en la imagen. 
 
@@ -33,6 +35,8 @@ El script fue creado para realizar de 500 a 1000 mediciones y con ellas calcular
 *RMS: Valor efectivo. 
 
 ![](./RMS.png)
+
+donde `Nmes` son la cantidad de mediciones y `xi` el valor medido.
 
 *Valor mínimo.
 
