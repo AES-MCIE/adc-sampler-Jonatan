@@ -10,7 +10,7 @@
   *  - [x] Promedio
   *  - [x] Mediana
   *  - [x] Histograma
-  *  - [ ] RMS
+  *  - [x] RMS
   *  - [ ] Densidad de potencia
   * */
 #include <stdio.h>
@@ -27,14 +27,10 @@ int main(int argc, char *argv[]){
 	int min = 0;
 	int max = 0;
 	unsigned long int SumPro = 0;
-	unsigned long int SumRMS1 = 0;
-	unsigned long int SumRMS2 = 0;
-	unsigned long int SumRMS3 = 0;
-	unsigned long int SumRMS4 = 0;
-	long long sRMS = 0;
-	double promedio = 0;
-	double rms = 0;
-	double mediana = 0;
+	double SumRMS = 0.0;
+	double promedio = 0.0;
+	double rms = 0.0;
+	double mediana = 0.0;
 
     //Cuando los argumentos no son dos
     if(argc != 2){
@@ -45,10 +41,10 @@ int main(int argc, char *argv[]){
     }
     //Convertir el argumento a entero
     int Nmes = strtol(argv[1], NULL, 10);
-	if(Nmes < 500 || Nmes > 1000){
+	if(Nmes < 10 || Nmes > 1000){
 		printf("Numero de mediciones incorrecto\n");
 		printf("EL script solo admite valores de 500-1000\n");
-		printf("Intente ./adc-meas 500\n");
+		printf("Intente ./nombre_archivo 500\n");
 		return 2;
 	}
 
@@ -56,7 +52,6 @@ int main(int argc, char *argv[]){
     FILE *fp;
     char reads[80];
 	int mediciones[Nmes];
-	int contador = 0;
 	int control = 0;
 	//Ciclos de n lecturas
     for(i = 0; i < Nmes; i++){
@@ -64,6 +59,7 @@ int main(int argc, char *argv[]){
         fgets(reads, 20, fp);
         //printf("%s", reads);
 		mediciones[i] = strtol(reads, NULL, 10);
+		//Registrar max y min
 		if (i == 0 ){
 			min = mediciones[i];
 			max = mediciones[i];
@@ -76,23 +72,13 @@ int main(int argc, char *argv[]){
 				max = mediciones[i];
 			}
 		}
+		//Suma de valores para promedio
 		SumPro = SumPro + mediciones[i];
-		contador++;
-		if (contador <= 250){
-			SumRMS1 = SumRMS1 + pow(mediciones[i], 2);
-		}
-		else if (contador > 250 && contador <= 500){
-			SumRMS2 = SumRMS2 + pow(mediciones[i], 2);
-		}
-		else if (contador > 500 && contador <= 750){
-			SumRMS3 = SumRMS3 + pow(mediciones[i], 2);
-		}
-		else {	
-			SumRMS4 = SumRMS4 + pow(mediciones[i], 2);
-		}
-		
+		//Suma de valores rms
+		SumRMS = SumRMS + pow(mediciones[i]/100.0, 2);
         sleep(0.01);
     }
+	//Calculo de mediana
 	if(Nmes % 2 == 0){
 		int divi = (Nmes-1)/2;
 		//printf("%d\n",divi);
@@ -103,21 +89,21 @@ int main(int argc, char *argv[]){
 		//printf("%d\n",divi);
 		mediana = mediciones[divi];
 	}
-	printf("RMS1 = %lu\n",SumRMS1);
-	printf("RMS2 = %lu\n",SumRMS2);
-	printf("RMS3 = %lu\n",SumRMS3);
-	printf("RMS4 = %lu\n",SumRMS4);
+
+	printf("RMS1 = %f\n",SumRMS);
+
 	promedio = SumPro/Nmes;
-	sRMS = SumRMS1+SumRMS2+SumRMS3+SumRMS4;
-	printf("%f\n", sRMS);
-	rms =sqrt(sRMS/Nmes);
+	rms =sqrt(SumRMS/Nmes);
+	rms = rms*100.0;
 	printf("El promedio es: %f\n", promedio);
 	printf("El valor RMS es: %f\n", rms);
 	printf("El valor minimo es: %d\n",min);
 	printf("El valor maximo es: %d\n",max);
 	printf("Mediana: %f\n",mediana);
 	printf("\n\nHistograma de mediciones\n\n");
+	//Impresion de histograma
 	int aux = 0;
+	int contador = 0;
 	for(i = 0; i < Nmes; i++){
 		contador = mediciones[i];
 		if(i < 9){
@@ -141,6 +127,7 @@ int main(int argc, char *argv[]){
 		}
 		printf("\n");
 	}
+	printf("\n");
     return 0;
 }
 
