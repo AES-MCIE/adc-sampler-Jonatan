@@ -55,7 +55,7 @@ se escribirá a la hora de ejecutar el script.
 
 - Para compilar el archivo es necesario que se encuentre en la carpeta en la que se tiene almacenado.
 
-- Ya no es necesario darle permisos de ejecución a `archivo_salida`, ya se le da el permiso al momento de crearse.
+- Ya no es necesario darle permisos de ejecución a `archivo_salida`, ya que tiene el permiso desde que se crea.
 
 # Modo de uso
 
