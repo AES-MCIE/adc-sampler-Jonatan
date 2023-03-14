@@ -53,12 +53,12 @@ Se compone de dos entradas (terminal inversora '-' y terminal no inversora '+') 
 
 Los amplificadores se pueden configurar de diferentes maneras, sin embargo, se usó como amplificador inversor y sumador.
 
-*Amplificador inversor: La entrada no inversora se conecta a tierra, a la entrada inversora se conecta el voltaje a amplificar (V1) mediante una resistencia R1, finalmente, la resistencia Rf se conecta a la salida 
-y a la terminar inversora, en la imagen se muestra las conexiones de esta configuración y el fórmula del voltaje de salida. 
+- Amplificador inversor: La entrada no inversora se conecta a tierra, a la entrada inversora se conecta el voltaje a amplificar (V1) mediante una resistencia R1, finalmente, la resistencia Rf se conecta a la salida 
+y a la terminar inversora, en la imagen se muestran las conexiones de esta configuración y la fórmula del voltaje de salida. 
 
 ![](./inversor.png)
 
-*Amplificador sumador: Tiene varias fuentes de voltaje conectadas a la terminal inversora mediante resistencias, se pueden sumar n voltajes; la resistencia Rf se conecta a la salida y a la terminar inversora; la terminal no inversora se conecta a tierra. En la imagen se muestra el circuito de un amplificador sumador y la fórmula del voltaje de salida. 
+- Amplificador sumador: Tiene varias fuentes de voltaje conectadas a la terminal inversora mediante resistencias, se pueden sumar n voltajes; la resistencia Rf se conecta a la salida y a la terminar inversora; la terminal no inversora se conecta a tierra. En la imagen se muestra el circuito de un amplificador sumador y la fórmula del voltaje de salida. 
 
 ![](./sumador.png)
 
