@@ -3,6 +3,8 @@ Implement the next Data logger for the adc using C to program the function to co
 
 ![](./adc.001.jpeg)
 
+
+
 # Antes de iniciar
 
 Para poder ejecutar el script es necesario tener instalado ´gcc´, para comprobarlo teclee el siguiente comando:
@@ -41,6 +43,31 @@ donde `Nmes` son la cantidad de mediciones y `xi` el valor medido.
 *Valor mínimo.
 
 *Valor máximo.
+
+# Acondicionamiento de la señal
+
+Para realizar el acondicionamiento de la señal se hizo uso de un amplificador operacional,el cual es un dispositivo compacto activo y lineal de alta ganancia, diseñado para proporcionar la función de transferencia deseada.
+Se compone de dos entradas (terminal inversora '-' y terminal no inversora '+') y una salida, además de las terminales de alimentación positiva y negativa, como se muestra en la imagen. 
+
+![](./amplificador.png)
+
+Los amplificadores se pueden configurar de diferentes maneras, sin embargo, se usó como amplificador inversor y sumador.
+
+*Amplificador inversor: La entrada no inversora se conecta a tierra, a la entrada inversora se conecta el voltaje a amplificar (V1) mediante una resistencia R1, finalmente, la resistencia Rf se conecta a la salida 
+y a la terminar inversora, en la imagen se muestra las conexiones de esta configuración y el fórmula del voltaje de salida. 
+
+![](./inversor.png)
+
+*Amplificador sumador: Tiene varias fuentes de voltaje conectadas a la terminal inversora mediante resistencias, se pueden sumar n voltajes; la resistencia Rf se conecta a la salida y a la terminar inversora; la terminal no inversora se conecta a tierra. En la imagen se muestra el circuito de un amplificador sumador y la fórmula del voltaje de salida. 
+
+![](./sumador.png)
+
+## Circuito utilizado
+
+Para acondicionar la señal, primero se hizo uso de un amplificador inversor, con el fin de reducir la amplitud del voltaje de entrada, ya que tiene voltaje de pico a pico de 3V y se necesita que tenga voltaje de pico a 
+pico de 1.8V, en esta parte se sigue teniendo una señal de AC pero invertida respecto de la original. La segunda parte del circuito es un sumador, cuya propósito es sumarle un voltaje para poder mover el offset del 
+voltaje que sale del inversor, para ello se le suma un voltaje de -0.9V, con ello se elimina la parte positiva de la señal y se le suma a la parte negativa; finalmente, como el circuito invierte la suma de los voltajes, se tiene
+una señal que va de 0 a 1.8V. En la imagen se muestra el circuito utilizado junto con los valores de las resistencias.
 
 # Antes de ejecutar el script
 
