@@ -44,7 +44,7 @@ donde `Nmes` son la cantidad de mediciones y `xi` el valor medido.
 
 *Valor máximo.
 
-# Características de los ADC de BeagleBone Black
+# Características de los ADC de la BeagleBone Black
 
 **ADC**: Es un convertidor analógico-digital. 
 
@@ -55,6 +55,8 @@ Las características de los ADC de la BeagleBone Black son:
 * 125 ns de tiempo de muestreo. 
 * Rango de medición de 0 a 1.8V.
 * Cuenta con un pin especial para voltaje analógico llamado `VDD_ADC` y una tierra especial llamada `GNDA_ADC`.
+
+![](./bbb.png)
 
 # Acondicionamiento de la señal
 
@@ -80,8 +82,8 @@ Para acondicionar la señal, primero se hizo uso de un amplificador inversor, co
 ya que tiene voltaje de pico a pico de 3V y se necesita que tenga voltaje de pico a pico de 1.8V, se redujó a la mitad la amplitud de la señal con
 una combinación de resistencias de 10k ohms y 5.1k ohms, reduciendo el voltaje pico a pico a 1.53V pero aún con parte negativa y señal invertida. 
 
-La segunda parte del circuito es un sumador inversor, con resistencias iguales para no afectar la magnitud de los voltajes, cuya propósito es sumarle
-un voltaje para poder cambiar de nivel el voltaje y que permanezca arriba de cero, para ello se le suma una señal de -1V, con ello se elimina la 
+La segunda parte del circuito es un sumador inversor, con resistencias iguales para no afectar la magnitud de los voltajes, cuyo propósito es sumarle
+	un voltaje para poder cambiar de nivel el voltaje y que permanezca arriba de cero, para ello se le suma una señal de -1V, con ello se elimina la 
 parte positiva de la señal y se le suma a la parte negativa; finalmente, como el circuito invierte la suma de los voltajes, se tiene una señal que va,
 aproximadamente, de 0.23V a 1.76V. En la imagen se muestra el circuito utilizado junto con los valores de las resistencias.
 
@@ -102,9 +104,8 @@ se escribirá a la hora de ejecutar el script.
 
 # Modo de uso
 
-El pin que se usa como entrada es `AIN0`, que se puede observar en la parte izquierda de la imagen. 
-
-![](./bbb.png)
+El pin que se usa como entrada es `AIN0`, que se puede observar en la parte izquierda de la imagen colocada en la sección `Características de los 
+ADC de la BeagleBone Black`. 
 
 El script desarrollado es muy sencillo de usar, ya que solamente recibe un parámetro, el cual es el número de mediciones que se desean
 registrar, el comando es:
