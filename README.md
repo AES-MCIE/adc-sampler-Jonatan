@@ -44,30 +44,46 @@ donde `Nmes` son la cantidad de mediciones y `xi` el valor medido.
 
 *Valor máximo.
 
+# Características de los ADC de BeagleBone Black
+
+**ADC**: Es un convertidor analógico-digital. 
+
+Las características de los ADC de la BeagleBone Black son:
+
+* Siete canales (`AIN0`-`AIN6`).
+* 12 bits de resolución.
+* 125 ns de tiempo de muestreo. 
+* Rango de medición de 0 a 1.8V.
+* Cuenta con un pin especial para voltaje analógico llamado `VDD_ADC` y una tierra especial llamada `GNDA_ADC`.
+
 # Acondicionamiento de la señal
 
 Para realizar el acondicionamiento de la señal se hizo uso de un amplificador operacional,el cual es un dispositivo compacto activo y lineal de alta ganancia, diseñado para proporcionar la función de transferencia deseada.
-Se compone de dos entradas (terminal inversora '-' y terminal no inversora '+') y una salida, además de las terminales de alimentación positiva y negativa, como se muestra en la imagen. 
+Se compone de dos entradas (terminal inversora `-` y terminal no inversora `+`), una salida y las terminales de alimentación positiva y negativa, como se muestra en la imagen. 
 
 ![](./amplificador.png)
 
-Los amplificadores se pueden configurar de diferentes maneras, sin embargo, se usó como amplificador inversor y sumador.
+Los amplificadores se pueden configurar de diferentes maneras, sin embargo, se usó como amplificador inversor y sumador inversor.
 
 - Amplificador inversor: La entrada no inversora se conecta a tierra, a la entrada inversora se conecta el voltaje a amplificar (V1) mediante una resistencia R1, finalmente, la resistencia Rf se conecta a la salida 
 y a la terminar inversora, en la imagen se muestran las conexiones de esta configuración y la fórmula del voltaje de salida. 
 
 ![](./inversor.png)
 
-- Amplificador sumador: Tiene varias fuentes de voltaje conectadas a la terminal inversora mediante resistencias, se pueden sumar n voltajes; la resistencia Rf se conecta a la salida y a la terminar inversora; la terminal no inversora se conecta a tierra. En la imagen se muestra el circuito de un amplificador sumador y la fórmula del voltaje de salida. 
+- Amplificador sumador inversor: Tiene varias fuentes de voltaje conectadas a la terminal inversora mediante resistencias, se pueden sumar n voltajes; la resistencia Rf se conecta a la salida y a la terminar inversora; la terminal no inversora se conecta a tierra. En la imagen se muestra el circuito de un amplificador sumador y la fórmula del voltaje de salida. 
 
 ![](./sumador.png)
 
 ## Circuito utilizado
 
-Para acondicionar la señal, primero se hizo uso de un amplificador inversor, con el fin de reducir la amplitud del voltaje de entrada, ya que tiene voltaje de pico a pico de 3V y se necesita que tenga voltaje de pico a 
-pico de 1.8V, en esta parte se sigue teniendo una señal de AC pero invertida respecto de la original. La segunda parte del circuito es un sumador, cuya propósito es sumarle un voltaje para poder mover el offset del 
-voltaje que sale del inversor, para ello se le suma un voltaje de -0.9V, con ello se elimina la parte positiva de la señal y se le suma a la parte negativa; finalmente, como el circuito invierte la suma de los voltajes, se tiene
-una señal que va de 0 a 1.8V. En la imagen se muestra el circuito utilizado junto con los valores de las resistencias.
+Para acondicionar la señal, primero se hizo uso de un amplificador inversor, con el fin de reducir la amplitud del voltaje de entrada, 
+ya que tiene voltaje de pico a pico de 3V y se necesita que tenga voltaje de pico a pico de 1.8V, se redujó a la mitad la amplitud de la señal con
+una combinación de resistencias de 10k ohms y 5.1k ohms, reduciendo el voltaje pico a pico a 1.53V pero aún con parte negativa y señal invertida. 
+
+La segunda parte del circuito es un sumador inversor, con resistencias iguales para no afectar la magnitud de los voltajes, cuya propósito es sumarle
+un voltaje para poder cambiar de nivel el voltaje y que permanezca arriba de cero, para ello se le suma una señal de -1V, con ello se elimina la 
+parte positiva de la señal y se le suma a la parte negativa; finalmente, como el circuito invierte la suma de los voltajes, se tiene una señal que va,
+aproximadamente, de 0.23V a 1.76V. En la imagen se muestra el circuito utilizado junto con los valores de las resistencias.
 
 # Antes de ejecutar el script
 
