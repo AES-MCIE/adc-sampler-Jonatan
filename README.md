@@ -20,29 +20,27 @@ sudo apt install GCC
 
 El script fue creado para realizar de 500 a 1000 mediciones con el ADC0 de una BeagleBone Black y con ellas calcular:
 
-*Promedio: Suma de todos los valores dividido entre el numero de mediciones. 
+* Promedio: Suma de todos los valores dividido entre el numero de mediciones. 
 
 ![](./promedio.png)
 
 donde `Nmes` son la cantidad de mediciones y `xi` el valor medido. 
 
-*Mediana: Valor que se encuentra en la posición central de los valores medidos. En caso de que el número de datos sea par, se calcula el promedio de los datos centrales, como se aprecia en la imagen. 
+* Mediana: Valor que se encuentra en la posición central de los valores medidos. En caso de que el número de datos sea par, se calcula el promedio de los datos centrales, como se aprecia en la imagen. 
 
 ![](./mediana.png)
 
-*Densidad de potencia.
+* Mostrar histograma.
 
-*Mostrar histograma.
-
-*RMS: Valor efectivo. 
+* RMS: Valor efectivo. 
 
 ![](./RMS.png)
 
 donde `Nmes` son la cantidad de mediciones y `xi` el valor medido.
 
-*Valor mínimo.
+* Valor mínimo.
 
-*Valor máximo.
+* Valor máximo.
 
 # Características de los ADC de la BeagleBone Black
 
@@ -83,7 +81,7 @@ ya que tiene voltaje de pico a pico de 3V y se necesita que tenga voltaje de pic
 una combinación de resistencias de 10k ohms y 5.1k ohms, reduciendo el voltaje pico a pico a 1.53V pero aún con parte negativa y señal invertida. 
 
 La segunda parte del circuito es un sumador inversor, con resistencias iguales para no afectar la magnitud de los voltajes, cuyo propósito es sumarle
-	un voltaje para poder cambiar de nivel el voltaje y que permanezca arriba de cero, para ello se le suma una señal de -1V, con ello se elimina la 
+un voltaje para poder cambiar de nivel el voltaje y que permanezca arriba de cero, para ello se le suma una señal de -1V, con ello se elimina la 
 parte positiva de la señal y se le suma a la parte negativa; finalmente, como el circuito invierte la suma de los voltajes, se tiene una señal que va,
 aproximadamente, de 0.23V a 1.76V. En la imagen se muestra el circuito utilizado junto con los valores de las resistencias.
 
@@ -117,4 +115,4 @@ En donde `x` es el número de mediciones, el cual puede ir de 500 a 1000.
 # Nota
 
 Cada línea `|` del histograma representa 20 unidades del valor medido, esto se realizó para que se pudiera visualizar bien en la
-terminal, aun así, puede que no quepa en pantalla, por lo que puede que se necesite alejar la vista.
+terminal, aun así, puede que no quepa en pantalla, por lo que es posible que se necesite alejar la vista.
