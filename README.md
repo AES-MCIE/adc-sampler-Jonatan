@@ -26,7 +26,7 @@ El script fue creado para realizar de 500 a 1000 mediciones con el ADC0 de una B
 
 donde `Nmes` son la cantidad de mediciones y `xi` el valor medido. 
 
-* Mediana: Valor que se encuentra en la posición central de los valores medidos. En caso de que el número de datos sea par, se calcula el promedio de los datos centrales, como se aprecia en la imagen. 
+* Mediana: Valor que se encuentra en la posición central de los valores medidos y ordenados. En caso de que el número de datos sea par, se calcula el promedio de los datos centrales, como se aprecia en la imagen. 
 
 ![](./mediana.png)
 

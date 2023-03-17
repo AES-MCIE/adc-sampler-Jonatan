@@ -52,6 +52,8 @@ int main(int argc, char *argv[]){
     FILE *fp;
     char reads[80];
 	int mediciones[Nmes];
+	int ordenados[Nmes];
+	int aux2 = 0;
 	int control = 0;
 	//Ciclos de n lecturas
     for(i = 0; i < Nmes; i++){
@@ -59,6 +61,7 @@ int main(int argc, char *argv[]){
         fgets(reads, 20, fp);
         //printf("%s", reads);
 		mediciones[i] = strtol(reads, NULL, 10);
+		ordenados[i] = strtol(reads, NULL, 10);
 		//Registrar max y min
 		if (i == 0 ){
 			min = mediciones[i];
@@ -78,19 +81,35 @@ int main(int argc, char *argv[]){
 		SumRMS = SumRMS + pow(mediciones[i]/100.0, 2);
         sleep(0.01);
     }
+	//Se ordena la matriz para la mediana
+	for (i = 0; i < Nmes; i++){
+		for (j = i+1; j < Nmes; j++){
+			if (ordenados[i] > ordenados[j]){
+				aux2 = ordenados [i];
+				ordenados[i] = ordenados[j];
+				ordenados[j] = aux2;
+			}
+		}
+	}
+	/*	Comprobar ordenamiento de matriz
+	for (i = 0; i < Nmes; i++){
+		printf("%d\n", ordenados[i]);
+	}*/
+
 	//Calculo de mediana
 	if(Nmes % 2 == 0){
 		int divi = (Nmes-1)/2;
 		//printf("%d\n",divi);
-		mediana =(mediciones[divi]+mediciones[divi+1])/2;
+		mediana =(ordenados[divi]+ordenados[divi+1])/2;
 	}
 	else {
 		int divi = (Nmes-1)/2;
 		//printf("%d\n",divi);
-		mediana = mediciones[divi];
+		mediana = ordenados[divi];
 	}
 
-	printf("RMS1 = %f\n",SumRMS);
+	//Valor total de la suma
+	//printf("RMS1 = %f\n",SumRMS);
 
 	promedio = SumPro/Nmes;
 	rms =sqrt(SumRMS/Nmes);
