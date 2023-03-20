@@ -30,7 +30,7 @@ donde `Nmes` son la cantidad de mediciones y `xi` el valor medido.
 
 ![](./mediana.png)
 
-* Mostrar histograma.
+* Histograma: Es una representación gráfica de la distribución de los datos.
 
 * RMS: Valor efectivo. 
 
@@ -114,5 +114,5 @@ En donde `x` es el número de mediciones, el cual puede ir de 500 a 1000.
 
 # Nota
 
-Cada línea `|` del histograma representa 20 unidades del valor medido, esto se realizó para que se pudiera visualizar bien en la
-terminal, aun así, puede que no quepa en pantalla, por lo que es posible que se necesite alejar la vista.
+Cada línea `|` del histograma representa que se realizó una medición en el rango indicado a la izquierda, se dividieron los 4096 valores 
+posibles que puede otorgar el ADC en 25 rangos, cada uno de 164 unidade.

@@ -55,6 +55,7 @@ int main(int argc, char *argv[]){
 	int ordenados[Nmes];
 	int aux2 = 0;
 	int control = 0;
+	int histograma[25] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; 
 	//Ciclos de n lecturas
     for(i = 0; i < Nmes; i++){
         fp = fopen(ADC0, "rt");
@@ -81,8 +82,60 @@ int main(int argc, char *argv[]){
 		SumRMS = SumRMS + pow(mediciones[i]/100.0, 2);
         sleep(0.01);
     }
-	//Se ordena la matriz para la mediana
+	//Se ordena la matriz para la mediana y se calcula histograma
 	for (i = 0; i < Nmes; i++){
+		if(mediciones[i] <= 164){
+			histograma[0] = histograma[0]+1;
+		}
+		else if(mediciones[i] > 164 && mediciones[i] <= 328){
+			histograma[1] = histograma[1]+1;}		
+		else if(mediciones[i] > 328 && mediciones[i] <= 492){
+			histograma[2] = histograma[2]+1;}
+		else if(mediciones[i] > 492 && mediciones[i] <= 656){
+			histograma[3] = histograma[3]+1;}
+		else if(mediciones[i] > 656 && mediciones[i] <= 820){
+			histograma[4] = histograma[4]+1;}
+		else if(mediciones[i] > 820 && mediciones[i] <= 984){
+			histograma[5] = histograma[5]+1;}
+		else if(mediciones[i] > 984 && mediciones[i] <= 1148){
+			histograma[6] = histograma[6]+1;}
+		else if(mediciones[i] > 1148 && mediciones[i] <= 1312){
+			histograma[7] = histograma[7]+1;}
+		else if(mediciones[i] > 1312 && mediciones[i] <= 1476){
+			histograma[8] = histograma[8]+1;}
+		else if(mediciones[i] > 1476 && mediciones[i] <= 1640){
+			histograma[9] = histograma[9]+1;}
+		else if(mediciones[i] > 1640 && mediciones[i] <= 1804){
+			histograma[10] = histograma[10]+1;}
+		else if(mediciones[i] > 1804 && mediciones[i] <= 1968){
+			histograma[11] = histograma[11]+1;}
+		else if(mediciones[i] > 1968 && mediciones[i] <= 2132){
+			histograma[12] = histograma[12]+1;}
+		else if(mediciones[i] > 2132 && mediciones[i] <= 2296){
+			histograma[13] = histograma[13]+1;}
+		else if(mediciones[i] > 2296 && mediciones[i] <= 2460){
+			histograma[14] = histograma[14]+1;}
+		else if(mediciones[i] > 2460 && mediciones[i] <= 2624){
+			histograma[15] = histograma[15]+1;}
+		else if(mediciones[i] > 2624 && mediciones[i] <= 2788){
+			histograma[16] = histograma[16]+1;}
+		else if(mediciones[i] > 2788 && mediciones[i] <= 2952){
+			histograma[17] = histograma[17]+1;}
+		else if(mediciones[i] > 2952 && mediciones[i] <= 3116){
+			histograma[18] = histograma[18]+1;}
+		else if(mediciones[i] > 3116 && mediciones[i] <= 3280){
+			histograma[20] = histograma[19]+1;}
+		else if(mediciones[i] > 3280 && mediciones[i] <= 3444){
+			histograma[20] = histograma[20]+1;}
+		else if(mediciones[i] > 3444 && mediciones[i] <= 3608){
+			histograma[21] = histograma[21]+1;}
+		else if(mediciones[i] > 3608 && mediciones[i] <= 3772){
+			histograma[22] = histograma[22]+1;}
+		else if(mediciones[i] > 3772 && mediciones[i] <= 3936){
+			histograma[23] = histograma[23]+1;}
+		else if(mediciones[i] > 3936){
+			histograma[24] = histograma[24]+1;}
+
 		for (j = i+1; j < Nmes; j++){
 			if (ordenados[i] > ordenados[j]){
 				aux2 = ordenados [i];
@@ -100,7 +153,7 @@ int main(int argc, char *argv[]){
 	if(Nmes % 2 == 0){
 		int divi = (Nmes-1)/2;
 		//printf("%d\n",divi);
-		mediana =(ordenados[divi]+ordenados[divi+1])/2;
+		mediana =(ordenados[divi]+ordenados[divi+1])/2.0;
 	}
 	else {
 		int divi = (Nmes-1)/2;
@@ -111,7 +164,7 @@ int main(int argc, char *argv[]){
 	//Valor total de la suma
 	//printf("RMS1 = %f\n",SumRMS);
 
-	promedio = SumPro/Nmes;
+	promedio = SumPro/(Nmes*1.0);
 	rms =sqrt(SumRMS/Nmes);
 	rms = rms*100.0;
 	printf("El promedio es: %f\n", promedio);
@@ -119,30 +172,35 @@ int main(int argc, char *argv[]){
 	printf("El valor minimo es: %d\n",min);
 	printf("El valor maximo es: %d\n",max);
 	printf("Mediana: %f\n",mediana);
-	printf("\n\nHistograma de mediciones\n\n");
+	printf("\nHistograma de mediciones\n");
 	//Impresion de histograma
-	int aux = 0;
 	int contador = 0;
-	for(i = 0; i < Nmes; i++){
-		contador = mediciones[i];
-		if(i < 9){
-			printf("000%d]  ", i+1);
+	int rango1 = 0;
+	int rango2 = 0;
+	for(i = 0; i < 25; i++){
+		if(i == 0){
+			printf("000");
+			rango1=0;
+		}else{
+			rango1=(164*i)+1;
 		}
-		else if (i > 8 && i < 99){
-			printf("00%d]  ", i+1);
+		rango2=164*(i+1);
+		contador = histograma[i];
+		//Arreglo de formato para cientos en rango1
+		if(rango1 > 0 && rango1 <1000){
+			printf("0%d - ",rango1);
+		}else{	
+			printf("%d - ",rango1);
 		}
-		else if (i > 98 && i < 999){
-			printf("0%d]  ", i+1);
+		//Arreglo de formato para cientos en rango2
+		if(rango2 < 1000){
+			printf("0%d  ",rango2);
+		}else{
+			printf("%d  ",rango2);
 		}
-		else {
-			printf("%d]  ", i+1);
-		}
-		for(j = 0; j <= contador; j++){
-			aux++;
-			if (aux == 20){
-				aux = 0;
-				printf("|");
-			}
+
+		for(j = 0; j < contador; j++){
+			printf("|");
 		}
 		printf("\n");
 	}
