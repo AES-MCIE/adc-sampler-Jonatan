@@ -114,5 +114,5 @@ En donde `x` es el número de mediciones, el cual puede ir de 500 a 1000.
 
 # Nota
 
-Cada línea `|` del histograma representa que se realizó una medición en el rango indicado a la izquierda, se dividieron los 4096 valores 
-posibles que puede otorgar el ADC en 25 rangos, cada uno de 164 unidade.
+Cada línea `|` del histograma representa que se realizó una medición en el rango indicado a la izquierda, se dividió el rango de valores de 0 a 4096 
+puede otorgar el ADC, en 25 rangos, cada uno de 164 unidades.
