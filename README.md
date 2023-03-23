@@ -106,16 +106,17 @@ El pin que se usa como entrada es `AIN0`, que se puede observar en la parte izqu
 ADC de la BeagleBone Black`. 
 
 El script desarrollado es muy sencillo de usar, ya que solamente recibe un parámetro, el cual es el número de mediciones que se desean
-registrar, el comando es:
+registrar o help:
 ```
 ./archivo_salida x
 ```
 En donde `x` es el número de mediciones, el cual puede ir de 500 a 1000.
 
-El siguiente comando disponible es el de ayuda, el cual indica el comando correcto a utilizar y las mediciones que realiza el script. 
 ```
 ./archivo_salida help
 ```
+
+Al colocar `help`, se muestran los comandos disponibles y las mediciones que realiza el script.  
 
 # Nota
 

@@ -31,9 +31,8 @@ int main(int argc, char *argv[]){
 	double promedio = 0.0;
 	double rms = 0.0;
 	double mediana = 0.0;
-	//int Nmes = strtol(argv[1], NULL, 10);
-	//printf("%d\n", Nmes);
 	char *valor = "help";
+
     //Cuando los argumentos no son dos
     if(argc != 2){
         printf("No. de argumentos: %d\n", argc);
@@ -41,7 +40,7 @@ int main(int argc, char *argv[]){
         printf("Donde n es el numero de lecturas\n");
         return 2;
     }
-
+	//Comando con help
 	if(strcmp(argv[1], valor) == 0){
 		printf("Autor: Jonatan Ali Medina Molina\n");
 		printf("IT Morelia\n");
@@ -63,7 +62,7 @@ int main(int argc, char *argv[]){
 		printf("Donde n es el numero de mediciones (de 500 a 1000)\n");
 		return 1;
 	}	
-		//Convertir el argumento a entero
+	//No. argumentos ok, verificacion de No. de mediciones
 	int Nmes = strtol(argv[1], NULL, 10);
 	if (Nmes > 0){
 		if(Nmes < 500 || Nmes > 1000){
@@ -73,10 +72,12 @@ int main(int argc, char *argv[]){
 			return 2;
 		}
 	}
+	//Si es cero, indica que no se coloco un numero o se coloco el cero.
 	else {
 		printf("Comando no reconocido, para mas informacion introduzca %s help\n",argv[0]);
 		return 2;
 	}
+
     printf("No. de repeticiones: %d\n", Nmes);
     FILE *fp;
     char reads[80];
@@ -111,7 +112,7 @@ int main(int argc, char *argv[]){
 		SumRMS = SumRMS + pow(mediciones[i]/100.0, 2);
         sleep(0.01);
     }
-	//Se ordena la matriz para la mediana y se calcula histograma
+	//Se ordena la matriz para la mediana y se calcula histograma en 25 rangos
 	for (i = 0; i < Nmes; i++){
 		if(mediciones[i] <= 164){
 			histograma[0] = histograma[0]+1;
