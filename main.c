@@ -31,7 +31,9 @@ int main(int argc, char *argv[]){
 	double promedio = 0.0;
 	double rms = 0.0;
 	double mediana = 0.0;
-
+	//int Nmes = strtol(argv[1], NULL, 10);
+	//printf("%d\n", Nmes);
+	char *valor = "help";
     //Cuando los argumentos no son dos
     if(argc != 2){
         printf("No. de argumentos: %d\n", argc);
@@ -39,15 +41,42 @@ int main(int argc, char *argv[]){
         printf("Donde n es el numero de lecturas\n");
         return 2;
     }
-    //Convertir el argumento a entero
-    int Nmes = strtol(argv[1], NULL, 10);
-	if(Nmes < 10 || Nmes > 1000){
-		printf("Numero de mediciones incorrecto\n");
-		printf("EL script solo admite valores de 500-1000\n");
-		printf("Intente ./nombre_archivo 500\n");
+
+	if(strcmp(argv[1], valor) == 0){
+		printf("Autor: Jonatan Ali Medina Molina\n");
+		printf("IT Morelia\n");
+		printf("Morelia, Michoacan\n");
+		printf("Marzo del 2023\n");
+		printf("\n");
+		printf("El script sirve para realizar de 500 a 1000 mediciones usando el AIN0 de una BeagleBone Black\n");
+		printf("Realiza las siguientes acciones:\n");
+		printf("* Histograma\n");
+		printf("* Promedio\n");
+		printf("* RMS\n");
+		printf("* Maximo\n");
+		printf("* Minimo\n");
+		printf("* Mediana\n");
+		printf("\n\n");
+		printf("Los comandos disponibles son: \n");
+		printf("%s help\n",argv[0]);
+		printf("%s n\n",argv[0]);
+		printf("Donde n es el numero de mediciones (de 500 a 1000)\n");
+		return 1;
+	}	
+		//Convertir el argumento a entero
+	int Nmes = strtol(argv[1], NULL, 10);
+	if (Nmes > 0){
+		if(Nmes < 500 || Nmes > 1000){
+			printf("Numero de mediciones incorrecto\n");
+			printf("EL script solo admite valores de 500-1000\n");
+			printf("Para mas informacion introduzca %s help\n", argv[0]);
+			return 2;
+		}
+	}
+	else {
+		printf("Comando no reconocido, para mas informacion introduzca %s help\n",argv[0]);
 		return 2;
 	}
-
     printf("No. de repeticiones: %d\n", Nmes);
     FILE *fp;
     char reads[80];

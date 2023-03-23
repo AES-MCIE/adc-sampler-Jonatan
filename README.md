@@ -112,6 +112,11 @@ registrar, el comando es:
 ```
 En donde `x` es el número de mediciones, el cual puede ir de 500 a 1000.
 
+El siguiente comando disponible es el de ayuda, el cual indica el comando correcto a utilizar y las mediciones que realiza el script. 
+```
+./archivo_salida help
+```
+
 # Nota
 
 Cada línea `|` del histograma representa que se realizó una medición en el rango indicado a la izquierda, se dividió el rango de valores de 0 a 4096 
