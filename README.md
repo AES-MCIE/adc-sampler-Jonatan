@@ -104,8 +104,15 @@ La señal de salida del circuito se muestra a continuación, la cual tiene un vo
 
 ## Conexión del circuito con la BeagleBone Black
 
-A continuación se muestra la conexión final del circuito de acondicionamiento con el AIN0. 
+A continuación se muestra la conexión final del circuito de acondicionamiento con el AIN0, la conexión con los pines de la BeagleBone Black, el generador de señales y el osciloscopio.
 
+![](./esquematico.png)
+
+### Consideraciones durante la conexión del circuito. 
+
+- Para la medición de señales con los ADCs, la tierra se debe de conectar al pin con el nombre `GND_ADC`.
+- Hacer la conexión primero del circuito acondicionador y verificar el voltaje de salida con el osciloscopio antes de conectar al ADC para evitar quemarlo. 
+- En la desconexión, primero desconectar el pin del ADC y luego apagar el circuito acondicionador, ya que al usarse voltaje negativo para eliminar el offset, el pin del ADC se quemará si lo recibe directamente.
 
 # Antes de ejecutar el script
 
