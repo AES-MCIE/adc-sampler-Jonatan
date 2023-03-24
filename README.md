@@ -94,7 +94,7 @@ La señal utilizada se creó en un generador, la cual tiene voltaje de pico de 1
 
 ![](./generador.png)
 
-Se armó el circuito mostrado en la sección `Circuito utilizado`, quedando como se muestra en la siguiente imagen.
+Se armó el circuito mostrado en la sección `Circuito utilizado` y utilizando el amplificador `LM324N`, quedando como se muestra en la siguiente imagen.
 
 ![](./circuitoFisico.png)
 
@@ -147,7 +147,13 @@ En donde `x` es el número de mediciones, el cual puede ir de 500 a 1000.
 
 Al colocar `help`, se muestran los comandos disponibles y las mediciones que realiza el script.  
 
-# Nota
+## Nota
 
-Cada línea `|` del histograma representa que se realizó una medición en el rango indicado a la izquierda, se dividió el rango de valores de 0 a 4096 
+Cada línea `|` del histograma representa que se realizó una medición en el rango indicado a la izquierda, se dividió el rango de valores de 0 a 4095 
 puede otorgar el ADC, en 25 rangos, cada uno de 164 unidades.
+
+# Resultados
+
+En la siguiente imagen se muestra el resultado mostrado en terminal al ejecutar el script con 500 mediciones.
+
+![](./shell.png)
