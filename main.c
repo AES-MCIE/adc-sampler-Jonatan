@@ -24,9 +24,9 @@ int main(int argc, char *argv[]){
     printf("Script ejecutandose\n");
     int i;
 	int j;
-	int min = 0;
-	int max = 0;
-	unsigned long int SumPro = 0;
+	double min = 0.0;
+	double max = 0.0;
+	double SumPro = 0.0;
 	double SumRMS = 0.0;
 	double promedio = 0.0;
 	double rms = 0.0;
@@ -42,32 +42,33 @@ int main(int argc, char *argv[]){
     }
 	//Comando con help
 	if(strcmp(argv[1], valor) == 0){
-		printf("Autor: Jonatan Ali Medina Molina\n");
-		printf("IT Morelia\n");
-		printf("Morelia, Michoacan\n");
-		printf("Marzo del 2023\n");
+		printf("Autor: Jonatan Ali Medina Molina.\n");
+		printf("IT Morelia.\n");
+		printf("Morelia, Michoacan.\n");
+		printf("Marzo del 2023.\n");
 		printf("\n");
-		printf("El script sirve para realizar de 500 a 1000 mediciones usando el AIN0 de una BeagleBone Black\n");
+		printf("El script sirve para realizar de 500 a 1000 mediciones usando el AIN0 de una BeagleBone Black.\n");
+		printf("La frecuencia de muestreo es de 2 kHz.\n");
 		printf("Realiza las siguientes acciones:\n");
-		printf("* Histograma\n");
-		printf("* Promedio\n");
-		printf("* RMS\n");
-		printf("* Maximo\n");
-		printf("* Minimo\n");
-		printf("* Mediana\n");
+		printf("* Histograma.\n");
+		printf("* Promedio.\n");
+		printf("* RMS.\n");
+		printf("* Maximo.\n");
+		printf("* Minimo.\n");
+		printf("* Mediana.\n");
 		printf("\n\n");
 		printf("Los comandos disponibles son: \n");
 		printf("%s help\n",argv[0]);
 		printf("%s n\n",argv[0]);
-		printf("Donde n es el numero de mediciones (de 500 a 1000)\n");
+		printf("Donde n es el numero de mediciones (de 500 a 1000).\n");
 		return 1;
 	}	
 	//No. argumentos ok, verificacion de No. de mediciones
 	int Nmes = strtol(argv[1], NULL, 10);
 	if (Nmes > 0){
 		if(Nmes < 500 || Nmes > 1000){
-			printf("Numero de mediciones incorrecto\n");
-			printf("EL script solo admite valores de 500-1000\n");
+			printf("Numero de mediciones incorrecto.\n");
+			printf("EL script solo admite valores de 500-1000.\n");
 			printf("Para mas informacion introduzca %s help\n", argv[0]);
 			return 2;
 		}
@@ -95,21 +96,22 @@ int main(int argc, char *argv[]){
 		ordenados[i] = strtol(reads, NULL, 10);
 		//Registrar max y min
 		if (i == 0 ){
-			min = mediciones[i];
+			min = (mediciones[i]);
 			max = mediciones[i];
 		}
 		else{
 			if (min > mediciones[i]){
-				min = mediciones[i];
+				min = (mediciones[i]);
 			}
 			if (max < mediciones[i]){
 				max = mediciones[i];
 			}
 		}
 		//Suma de valores para promedio
-		SumPro = SumPro + mediciones[i];
+		double parcial = (mediciones[i]/4095.0);
+		SumPro = SumPro + (parcial*1.8);
 		//Suma de valores rms
-		SumRMS = SumRMS + pow(mediciones[i]/100.0, 2);
+		SumRMS = SumRMS + pow(parcial*1.8, 2);
         sleep(0.01);
     }
 	//Se ordena la matriz para la mediana y se calcula histograma en 25 rangos
@@ -184,11 +186,12 @@ int main(int argc, char *argv[]){
 		int divi = (Nmes-1)/2;
 		//printf("%d\n",divi);
 		mediana =(ordenados[divi]+ordenados[divi+1])/2.0;
+		mediana =(mediana/4095)*1.8;
 	}
 	else {
 		int divi = (Nmes-1)/2;
 		//printf("%d\n",divi);
-		mediana = ordenados[divi];
+		mediana = (ordenados[divi]/4095)*1.8;
 	}
 
 	//Valor total de la suma
@@ -196,12 +199,14 @@ int main(int argc, char *argv[]){
 
 	promedio = SumPro/(Nmes*1.0);
 	rms =sqrt(SumRMS/Nmes);
-	rms = rms*100.0;
-	printf("El promedio es: %f\n", promedio);
-	printf("El valor RMS es: %f\n", rms);
-	printf("El valor minimo es: %d\n",min);
-	printf("El valor maximo es: %d\n",max);
-	printf("Mediana: %f\n",mediana);
+	rms = rms*1.0;
+	min = (min/4095)*1.8;
+	max = (max/4095)*1.8;
+	printf("El promedio es: %f Volts.\n", promedio);
+	printf("El valor RMS es: %f Volts.\n", rms);
+	printf("El valor minimo es: %f Volts.\n",min);
+	printf("El valor maximo es: %f Volts.\n",max);
+	printf("Mediana: %f Volts.\n",mediana);
 	printf("\nHistograma de mediciones\n");
 	//Impresion de histograma
 	int contador = 0;

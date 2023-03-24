@@ -18,7 +18,8 @@ sudo apt install GCC
 
 # Muestreo con ADC0 en BeagleBone Black
 
-El script fue creado para realizar de 500 a 1000 mediciones con el ADC0 de una BeagleBone Black y con ellas calcular:
+El script fue creado para realizar de 500 a 1000 mediciones con el ADC0 de una BeagleBone Black con una frecuencia
+de muestreo de 2 kHz y con ellas calcular:
 
 * Promedio: Suma de todos los valores dividido entre el numero de mediciones. 
 
@@ -78,12 +79,33 @@ y a la terminar inversora, en la imagen se muestran las conexiones de esta confi
 
 Para acondicionar la señal, primero se hizo uso de un amplificador inversor, con el fin de reducir la amplitud del voltaje de entrada, 
 ya que tiene voltaje de pico a pico de 3V y se necesita que tenga voltaje de pico a pico de 1.8V, se redujó a la mitad la amplitud de la señal con
-una combinación de resistencias de 10k ohms y 5.1k ohms, reduciendo el voltaje pico a pico a 1.53V pero aún con parte negativa y señal invertida. 
+una combinación de resistencias de 2k ohms y 1k ohms, reduciendo el voltaje pico a pico a 1.5V pero aún con parte negativa y señal invertida. 
 
 La segunda parte del circuito es un sumador inversor, con resistencias iguales para no afectar la magnitud de los voltajes, cuyo propósito es sumarle
 un voltaje para poder cambiar de nivel el voltaje y que permanezca arriba de cero, para ello se le suma una señal de -1V, con ello se elimina la 
 parte positiva de la señal y se le suma a la parte negativa; finalmente, como el circuito invierte la suma de los voltajes, se tiene una señal que va,
-aproximadamente, de 0.23V a 1.76V. En la imagen se muestra el circuito utilizado junto con los valores de las resistencias.
+aproximadamente, de 0.288V a 1.18V. En la imagen se muestra el circuito utilizado junto con los valores de las resistencias.
+
+![](./acondicionador.png)
+
+## Implementacion del circuito
+
+La señal utilizada se creó en un generador, la cual tiene voltaje de pico de 1.3 Volts, de tipo senoidal y a una frecuencia de 100 Hz, como se muestra en la imagen.
+
+![](./generador.png)
+
+Se armó el circuito mostrado en la sección `Circuito utilizado`, quedando como se muestra en la siguiente imagen.
+
+![](./circuitoFisico.png)
+
+La señal de salida del circuito se muestra a continuación, la cual tiene un voltaje mínimo de 288 mV y máxima de 1.18V, por lo que se puede conectar sin problema al AIN0 de la BeagleBone Black.
+
+![](./osciloscopio.png)
+
+## Conexión del circuito con la BeagleBone Black
+
+A continuación se muestra la conexión final del circuito de acondicionamiento con el AIN0. 
+
 
 # Antes de ejecutar el script
 
