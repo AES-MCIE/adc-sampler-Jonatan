@@ -84,7 +84,7 @@ una combinación de resistencias de 2k ohms y 1k ohms, reduciendo el voltaje pic
 La segunda parte del circuito es un sumador inversor, con resistencias iguales para no afectar la magnitud de los voltajes, cuyo propósito es sumarle
 un voltaje para poder cambiar de nivel el voltaje y que permanezca arriba de cero, para ello se le suma una señal de -1V, con ello se elimina la 
 parte positiva de la señal y se le suma a la parte negativa; finalmente, como el circuito invierte la suma de los voltajes, se tiene una señal que va,
-aproximadamente, de 0.288V a 1.18V. En la imagen se muestra el circuito utilizado junto con los valores de las resistencias.
+aproximadamente, de 0.160V a 1.36V. En la imagen se muestra el circuito utilizado junto con los valores de las resistencias.
 
 ![](./acondicionador.png)
 
@@ -98,7 +98,7 @@ Se armó el circuito mostrado en la sección `Circuito utilizado` y utilizando e
 
 ![](./circuitoFisico.png)
 
-La señal de salida del circuito se muestra a continuación, la cual tiene un voltaje mínimo de 288 mV y máxima de 1.18V, por lo que se puede conectar sin problema al AIN0 de la BeagleBone Black.
+La señal de salida del circuito se muestra a continuación, la cual tiene un voltaje mínimo de 160 mV y máxima de 1.36V, por lo que se puede conectar sin problema al AIN0 de la BeagleBone Black.
 
 ![](./osciloscopio.png)
 
@@ -154,6 +154,11 @@ puede otorgar el ADC, en 25 rangos, cada uno de 164 unidades.
 
 # Resultados
 
-En la siguiente imagen se muestra el resultado mostrado en terminal al ejecutar el script con 500 mediciones.
+En la siguiente imagen se observa el resultado mostrado en terminal al ejecutar el script con 500 mediciones.
+
+![](./shell2.png)
+
+En la siguiente imagen se observa el resultado mostrado en terminal al ejecutar el script con 1000 mediciones. 
 
 ![](./shell.png)
+
