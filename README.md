@@ -98,7 +98,7 @@ Se armó el circuito mostrado en la sección `Circuito utilizado` y utilizando e
 
 ![](./circuitoFisico.png)
 
-La señal de salida del circuito se muestra a continuación, la cual tiene un voltaje mínimo de 160 mV y máxima de 1.36V, por lo que se puede conectar sin problema al AIN0 de la BeagleBone Black.
+La señal de salida del circuito se conectó a un osciloscopio, la cual tiene un voltaje mínimo de 160 mV y máxima de 1.36V, por lo que se puede conectar sin problema al AIN0 de la BeagleBone Black.
 
 ![](./osciloscopio.png)
 
