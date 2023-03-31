@@ -154,11 +154,24 @@ puede otorgar el ADC, en 25 rangos, cada uno de 164 unidades.
 
 # Resultados
 
-En la siguiente imagen se observa el resultado mostrado en terminal al ejecutar el script con 500 mediciones.
+A continuación se muestran los resultados al ejecutar el script con diferente cantidad de mediciones realizadas. 
+
+Lo primero es compilar el archivo `main.c` con el comando:
+```
+gcc main.c -o adc-meas -lm
+```
+
+En la siguiente imagen se observa el resultado mostrado en terminal al ejecutar el script para realizar 500 mediciones con el siguiente comando:
+```
+./adc-meas 500
+```
 
 ![](./shell2.png)
 
-En la siguiente imagen se observa el resultado mostrado en terminal al ejecutar el script con 1000 mediciones. 
+En la siguiente imagen se observa el resultado mostrado en terminal al ejecutar el script para realizar 1000 mediciones con el siguiente comando:
+```
+./adc-meas 1000
+```
 
 ![](./shell.png)
 
